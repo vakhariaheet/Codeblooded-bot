@@ -2,7 +2,9 @@ import Twit from "twit";
 import config from "./config.js";
 const T = new Twit(config);
 import axios from "axios";
-
+import express from 'express'
+const app = express();
+app.use(express.json())
 const retweet = () => {
     console.log('reweet()')
     const params = {
@@ -87,4 +89,9 @@ Quoteinterval()
 tweetMovivational()
 runRetweet()
 runQoute()
-
+app.get('/',(req,res) => {
+    res.send('this is Bot Page')
+})
+app.listen(process.env.PORT || 3000, () => {
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+  });
