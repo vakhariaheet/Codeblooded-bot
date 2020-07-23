@@ -2,8 +2,8 @@ import Twit from "twit";
 import config from "./config.js";
 const T = new Twit(config);
 import axios from "axios";
-// Retweet lastest 10 tweets contaning #100DaysOfCode when run
-const retweet = () => {
+// Retweet and likes lastest 10 tweets contaning #100DaysOfCode when run
+const likeAndRetweet = () => {
     const params = {
         q:'#100DaysOfCode',
         result_type : 'recent',
@@ -22,6 +22,15 @@ const retweet = () => {
                         console.log(`something went wrong ${err}`)
                     }
                 })
+                T.post('favorites/create',{id: retweetId} , (err,response) => {
+                    if(!err){
+                        console.log(`liked ${retweetId}`)
+                    }
+                    else{
+                        console.log(`something went wrong ${err}`)
+                    }
+                })
+                
             }
         }
         else{
@@ -63,7 +72,7 @@ const generatedRetweetTime = () => {
     let time = 60000 * Math.floor((Math.random() *10)+1)
     console.log(time,'retweet')
     setTimeout(()=>{
-        retweet()
+        likeAndRetweet()
         retweetInterval()
     } , time)
 }
@@ -81,6 +90,7 @@ const retweetInterval = () =>{
 const tweetInterval =() => {
 generatedTweetTime()
 }
-tweet()
-retweetInterval()
-tweetInterval()
+// tweet()
+// retweetInterval()
+// tweetInterval()
+likeAndRetweet()
