@@ -90,7 +90,6 @@ const retweetInterval = () =>{
 const tweetInterval =() => {
 generatedTweetTime()
 }
-// tweet()
-// retweetInterval()
-// tweetInterval()
-likeAndRetweet()
+tweet()
+retweetInterval()
+tweetInterval()
