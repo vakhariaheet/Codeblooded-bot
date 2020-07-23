@@ -2,7 +2,6 @@ import Twit from "twit";
 import config from "./config.js";
 const T = new Twit(config);
 import axios from "axios";
-import express from 'express'
 
 const retweet = () => {
     console.log('reweet()')
