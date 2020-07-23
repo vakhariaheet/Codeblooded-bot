@@ -2,21 +2,16 @@ import Twit from "twit";
 import config from "./config.js";
 const T = new Twit(config);
 import axios from "axios";
-import express from 'express'
-const app = express();
-app.use(express.json())
+// Retweet lastest 10 tweets contaning #100DaysOfCode when run
 const retweet = () => {
-    console.log('reweet()')
     const params = {
         q:'#100DaysOfCode',
         result_type : 'recent',
         count:10
     }
     T.get('search/tweets',params,(err, data,response) => {
-        console.log('Helloo G')
         let tweets = data.statuses
         if(!err){
-            console.log('789')
                 for(let dat of tweets){
                 let retweetId = dat.id_str;
                 T.post('statuses/retweet/:id',{id: retweetId} , (err,response) => {
@@ -34,7 +29,8 @@ const retweet = () => {
         }
     })
 }
-const tweetMovivational = () => {
+//Get a quote from the API and the Tweet it when run
+const tweet = () => {
     axios({
         "method":"GET",
         "url":"https://quotes15.p.rapidapi.com/quotes/random/",
@@ -51,10 +47,9 @@ const tweetMovivational = () => {
             console.log(response.data)
             let text = response.data.content,
                 author = response.data.originator.name;
-                console.log(text,author)
             let finalTweetMsg =  `${text}\n -${author}`;
             T.post('statuses/update', { status: finalTweetMsg }, function(err, data, response) {
-                console.log(data)
+                console.log(text,author)
                 })
         })
         .catch((error)=>{
@@ -63,35 +58,29 @@ const tweetMovivational = () => {
 
 };
 
-function retweetinterval()  {
+//Randomly time in mins and at that time runs retweet Func. and retweetInterval func when run
+const generatedRetweetTime = () => {
     let time = 60000 * Math.floor((Math.random() *10)+1)
     console.log(time,'retweet')
     setTimeout(()=>{
-        console.log(time,'retweetfr')
         retweet()
-        runRetweet()
+        retweetInterval()
     } , time)
 }
-function Quoteinterval()  {
+const generatedTweetTime = () => {
     let timeForQoute = 60000 * Math.floor((Math.random() *5)+1)
     console.log(timeForQoute,'Quote')
     setTimeout(()=>{
-       tweetMovivational()
-       runQoute()
+       tweet()
+       tweetInterval()
     } , timeForQoute)
 }
-const runRetweet = () =>{
-    retweetinterval()
+const retweetInterval = () =>{
+    generatedRetweetTime()
 }
-const runQoute =() => {
-Quoteinterval()
+const tweetInterval =() => {
+generatedTweetTime()
 }
-tweetMovivational()
-runRetweet()
-runQoute()
-app.get('/',(req,res) => {
-    res.send('this is Bot Page')
-})
-app.listen(process.env.PORT || 3000, () => {
-    console.log("Express server listening on port 3000");
-  });
+tweet()
+retweetInterval()
+tweetInterval()
