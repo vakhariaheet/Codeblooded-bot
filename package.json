@@ -11,7 +11,6 @@
   "type": "module",
   "dependencies": {
     "axios": "^0.19.2",
-    "twit": "^2.2.11",
-    "twitter": "^1.7.1"
+    "twit": "^2.2.11"
   }
 }
