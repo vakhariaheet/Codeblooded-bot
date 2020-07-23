@@ -7,7 +7,7 @@ const likeAndRetweet = () => {
     const params = {
         q:'#100DaysOfCode',
         result_type : 'recent',
-        count:8
+        count:10
     }
     T.get('search/tweets',params,(err, data,response) => {
         let tweets = data.statuses
@@ -90,6 +90,5 @@ const retweetInterval = () =>{
 const tweetInterval =() => {
 generatedTweetTime()
 }
-tweet()
 retweetInterval()
 tweetInterval()
