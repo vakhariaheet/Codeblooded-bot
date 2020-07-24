@@ -7,7 +7,7 @@ const likeAndRetweet = () => {
     const params = {
         q:'#100DaysOfCode',
         result_type : 'recent',
-        count:10
+        count:30
     }
     T.get('search/tweets',params,(err, data,response) => {
         let tweets = data.statuses
