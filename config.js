@@ -1,8 +1,8 @@
 const config = {
-  consumer_key: "GjABvQ8yfgwCzMvYM7qrIBJND",
-  consumer_secret: "ftDJdOvDRZbaHGl5zGu37bUIFqTIfJ6h9LdcOWHQs6fplTKjzB",
-  access_token: "1285555761460871169-ksaPEDv0FTKeE4Gxw4ze8wJKgvMAhU",
-  access_token_secret: "NZFL9Ff2fMtqzhC9YVVJ7ALC0BGRnyGQA0NAxiC410Z0s",
+  consumer_key: "PL1U6S6f0DrLZzxyBqcptaWCR",
+  consumer_secret: "2bXSI7gHoH8tZ0SWdGuXjq8JDaFavKynfo2ORGtoaezmeXoMR4",
+  access_token: "1287306574998904832-rHbCCL2VL17moBL3DXfbObMnjiuj8Z",
+  access_token_secret: "UVdc3ApY6xFEpRYKAJbNbIUtZ6CbkSzeAWbqHSLvvbZLN",
   timeout_ms: 60 * 1000, // optional HTTP request timeout to apply to all requests.
   strictSSL: true, // optional - requires SSL certificates to be valid.
 };
