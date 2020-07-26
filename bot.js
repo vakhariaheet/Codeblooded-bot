@@ -4,12 +4,12 @@ const T = new Twit(config);
 import axios from "axios";
 // Retweet and likes lastest 10 tweets contaning #100DaysOfCode when run
 const likeAndRetweet = () => {
-    const params = {
+    const paramsN = {
         q:'#100DaysOfCode',
         result_type : 'recent',
         count:20
     }
-    T.get('search/tweets',params,(err, data,response) => {
+    T.get('search/tweets',paramsN,(err, data,response) => {
         let tweets = data.statuses
         if(!err){
                 for(let dat of tweets){
@@ -90,5 +90,6 @@ const retweetInterval = () =>{
 const tweetInterval =() => {
 generatedTweetTime()
 }
+likeAndRetweet()
 retweetInterval()
 tweetInterval()
