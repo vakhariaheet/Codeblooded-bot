@@ -17,19 +17,20 @@ const likeAndRetweet = () => {
                 T.post('statuses/retweet/:id',{id: retweetId} , (err,response) => {
                     if(!err){
                         console.log(`retweeted ${retweetId}`)
+                        T.post('favorites/create',{id: retweetId} , (err,response) => {
+                            if(!err){
+                                console.log(`liked ${retweetId}`)
+                            }
+                            else{
+                                console.log(`something went wrong ${err}`)
+                            }
+                        })
                     }
                     else{
                         console.log(`something went wrong ${err}`)
                     }
                 })
-                T.post('favorites/create',{id: retweetId} , (err,response) => {
-                    if(!err){
-                        console.log(`liked ${retweetId}`)
-                    }
-                    else{
-                        console.log(`something went wrong ${err}`)
-                    }
-                })
+                
                 
             }
         }
