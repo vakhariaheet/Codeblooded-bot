@@ -11,6 +11,8 @@
   "type": "module",
   "dependencies": {
     "axios": "^0.19.2",
-    "twit": "^2.2.11"
+    "dotenv": "^8.2.0",
+    "twit": "^2.2.11",
+    "vue-cli": "^2.9.6"
   }
 }
