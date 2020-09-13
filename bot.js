@@ -6,7 +6,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-Retweet and likes lastest 10 tweets contaning #100DaysOfCode when run
+//Retweet and likes lastest 10 tweets contaning #100DaysOfCode when run
 const likeAndRetweet = () => {
   const paramsN = {
     q: "#100DaysOfCode",
